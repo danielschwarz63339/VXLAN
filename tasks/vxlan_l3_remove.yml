@@ -5,18 +5,18 @@
     state: absent
 
 - name: Create Vlan and map to VNI
-  cisco.nxos.nxos_vxlan_vtep_vni:
+  nxos_vxlan_vtep_vni:
     interface: nve1
     vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
     state: absent
 
 - name: vni configuration
-  cisco.nxos.nxos_evpn_vni:
+  nxos_evpn_vni:
     vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
     state: absent
 
 - name: Configure L3 Interface
-  cisco.nxos.nxos_config:
+  nxos_config:
     lines:
     - no interface Vlan{{ vxlan.vlan_id }}
 ...
