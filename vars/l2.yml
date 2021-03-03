@@ -1,0 +1,6 @@
+---
+vxlan:
+ fikz: 110
+ vlan_id: 2500
+ description: TEST_01
+ 

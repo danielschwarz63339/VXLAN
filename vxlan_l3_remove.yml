@@ -1,0 +1,11 @@
+---
+- name:
+  gather_facts: no
+  hosts: nxos
+  tasks:
+    - include_vars: 
+        file: "./vars/l3.yml"
+
+    - name: VXLAN DELETE (incl. L3 Interface)
+      include: "./tasks/vxlan_l3_remove.yml"
+...

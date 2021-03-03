@@ -1,0 +1,11 @@
+---
+- name:
+  gather_facts: no
+  hosts: nxos
+  tasks:
+    - include_vars: 
+        file: "./vars/l2.yml"
+
+    - name: VXLAN DELETE (L2 only)
+      include: "./tasks/vxlan_l2_remove.yml"
+...

@@ -1,0 +1,23 @@
+--- 
+- name: Create Vlan and map to VNI
+  nxos_vlan:
+    vlan_id: "{{ vxlan.vlan_id }}"
+    mapped_vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
+    name: "{{ vxlan.description }}"
+    state: present
+
+- name: Create Vlan and map to VNI
+  cisco.nxos.nxos_vxlan_vtep_vni:
+    interface: nve1
+    vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
+    state: present
+
+- name: vni configuration
+  cisco.nxos.nxos_evpn_vni:
+    vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
+    route_distinguisher: "{{ vxlan.fikz }}:{{ vxlan.vlan_id }}"
+    route_target_both:
+    - "{{ vxlan.fikz }}:{{ vxlan.vlan_id }}"
+    state: present
+
+...

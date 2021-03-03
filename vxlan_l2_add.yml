@@ -1,0 +1,11 @@
+---
+- name:
+  gather_facts: no
+  hosts: nxos
+  tasks:
+    - include_vars: 
+        file: "./vars/l2.yml"
+
+    - name: VXLAN Config (L2 only)
+      include: "./tasks/vxlan_l2.yml"
+...
