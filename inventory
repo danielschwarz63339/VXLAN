@@ -3,26 +3,26 @@ ios
 nxos
 
 [ios]
-ios-xe ansible_host=ios-xe-mgmt.cisco.com
+ios-xe ansible_host: ios-xe-mgmt.cisco.com
 
 [ios:vars]
-ansible_become=yes
-ansible_become_method=enable
-ansible_network_os=cisco.ios.ios
-ansible_user=developer
-ansible_password=C1sco12345
-ansible_port=8181
-ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
-ANSIBLE_HOST_KEY_CHECKING=False
+ansible_become: yes
+ansible_become_method: enable
+ansible_network_os: cisco.ios.ios
+ansible_user: developer
+ansible_password: C1sco12345
+ansible_port: 8181
+ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+ANSIBLE_HOST_KEY_CHECKING: False
 
 [nxos]
-NXOS3 ansible_host=192.168.0.180
-NXOS4 ansible_host=192.168.0.181
-NXOS5 ansible_host=192.168.0.182
-NXOS6 ansible_host=192.168.0.183
+NXOS3 ansible_host: 192.168.0.180
+NXOS4 ansible_host: 192.168.0.181
+NXOS5 ansible_host: 192.168.0.182
+NXOS6 ansible_host: 192.168.0.183
 
 [nxos:vars]
-ansible_network_os=nxos
-ansible_user=admin
-ansible_password=admin
-ansible_connection=httpapi
+ansible_network_os: nxos
+ansible_user: admin
+ansible_password: admin
+ansible_connection: httpapi
