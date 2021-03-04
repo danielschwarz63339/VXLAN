@@ -9,9 +9,9 @@ nxos:
       ansible_host: 192.168.0.182
     NXOS6:
       ansible_host: 192.168.0.183
-
-#[nxos:vars]
-#ansible_network_os: nxos
-#ansible_user: admin
-#ansible_password: admin
-#ansible_connection: httpapi
+  vars:
+    ansible_network_os: nxos
+    ansible_user: admin
+    ansible_password: admin
+    ansible_connection: httpapi
+...
