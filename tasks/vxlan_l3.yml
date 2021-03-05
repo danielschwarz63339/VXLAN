@@ -27,6 +27,7 @@
     - vrf member {{ vxlan.vrf }}
     - ip address {{ vxlan.ipv4 }} tag {{ vxlan.vrf }}
     - fabric forwarding mode anycast-gateway
+    - no shutdown
     parents: interface Vlan{{ vxlan.vlan_id }}
 
 ...
