@@ -1,7 +1,7 @@
 ---
 vxlan:
  fikz: 110
- vlan_id: 2800
+ vlan_id: 2500
  description: TEST_04
  vrf: 1999
  ipv4: 10.10.100.1/24
