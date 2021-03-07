@@ -15,4 +15,9 @@
     vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
     state: absent
 
+- name: Save config
+  nxos_command:
+    commands:
+    - copy running-config startup-config
+    
 ...
