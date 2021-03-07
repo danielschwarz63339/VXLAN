@@ -20,4 +20,9 @@
     - "{{ vxlan.fikz }}:{{ vxlan.vlan_id }}"
     state: present
 
+- name: Save config
+  nxos_command:
+    commands:
+    - copy running-config startup-config
+    
 ...
