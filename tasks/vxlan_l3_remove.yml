@@ -19,4 +19,10 @@
   nxos_config:
     lines:
     - no interface Vlan{{ vxlan.vlan_id }}
+
+- name: Save config
+  nxos_command:
+    commands:
+    - copy running-config startup-config
+    
 ...
