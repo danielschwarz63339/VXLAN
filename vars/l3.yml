@@ -1,6 +1,6 @@
 ---
 vxlan:
- fikz: 110
+ fikz: 900
  vlan_id: 2800
  description: TEST_88
  vrf: 1999
