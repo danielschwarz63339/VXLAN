@@ -1,34 +1,34 @@
 --- 
 - name: Create Vlan and map to VNI
   nxos_vlan:
-    vlan_id: "{{ vxlan.vlan_id }}"
-    mapped_vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
-    name: "{{ vxlan.description }}"
+    vlan_id: "{{ vlan_id }}"
+    mapped_vni: "{{ block_id }}{{ vlan_id }}"
+    name: "{{ description }}"
     state: present
 
 - name: Create Vlan and map to VNI
   nxos_vxlan_vtep_vni:
     interface: nve1
-    vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
+    vni: "{{ block_id }}{{ vlan_id }}"
     state: present
 
 - name: vni configuration
   nxos_evpn_vni:
-    vni: "{{ vxlan.fikz }}{{ vxlan.vlan_id }}"
-    route_distinguisher: "{{ vxlan.fikz }}:{{ vxlan.vlan_id }}"
+    vni: "{{ block_id }}{{ vlan_id }}"
+    route_distinguisher: auto
     route_target_both:
-    - "{{ vxlan.fikz }}:{{ vxlan.vlan_id }}"
+    - "{{ block_id }}:{{ vlan_id }}"
     state: present
 
 - name: Configure L3 Interface
   nxos_config:
     lines:
-    - description {{ vxlan.description }}
-    - vrf member {{ vxlan.vrf }}
-    - ip address {{ vxlan.ipv4 }} tag {{ vxlan.vrf }}
+    - description {{ description }}
+    - vrf member {{ vrf }}
+    - ip address {{ ipv4 }} tag {{ vrf }}
     - fabric forwarding mode anycast-gateway
     - no shutdown
-    parents: interface Vlan{{ vxlan.vlan_id }}
+    parents: interface Vlan{{ vlan_id }}
 
 - name: Save config
   nxos_command:
