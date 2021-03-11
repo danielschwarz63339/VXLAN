@@ -1,6 +1,0 @@
----
-vxlan:
- fikz: 110
- vlan_id: 2622
- description: TEST_33
- 
