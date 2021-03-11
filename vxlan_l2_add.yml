@@ -19,7 +19,7 @@
     - name: vni configuration
       nxos_evpn_vni:
         vni: "{{ block_id }}{{ vlan_id }}"
-        route_distinguisher: "{{ block_id }}:{{ vlan_id }}"
+        route_distinguisher: auto
         route_target_both:
         - "{{ block_id }}:{{ vlan_id }}"
         state: present
