@@ -3,9 +3,29 @@
   gather_facts: no
   hosts: nxos
   tasks:
-    - include_vars: 
-        file: "./vars/l3.yml"
-
-    - name: VXLAN DELETE (incl. L3 Interface)
-      include: "./tasks/vxlan_l3_remove.yml"
+    - name: Remove Vlan global
+      nxos_vlan:
+        vlan_id: "{{ vlan_id }}"
+        state: absent
+    
+    - name: Remove Vlan from nve1
+      nxos_vxlan_vtep_vni:
+        interface: nve1
+        vni: "{{ block_id }}{{ vlan_id }}"
+        state: absent
+    
+    - name: Remove Vlan from evpn
+      nxos_evpn_vni:
+        vni: "{{ block_id }}{{ vlan_id }}"
+        state: absent
+    
+    - name: Remove L3 Interface
+      nxos_config:
+        lines:
+        - no interface Vlan{{ vlan_id }}
+    
+    - name: Save config
+      nxos_command:
+        commands:
+        - copy running-config startup-config
 ...
