@@ -3,8 +3,8 @@
   gather_facts: no
   hosts: nxos
   tasks:
-    - include_vars: 
-        file: "./vars/l3.yml"
+    #- include_vars: 
+    #    file: "./vars/l3.yml"
 
     - name: VXLAN Config (incl. L3 Interface)
       include: "./tasks/vxlan_l3.yml"
