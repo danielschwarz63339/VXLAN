@@ -21,7 +21,7 @@
         vni: "{{ block_id }}{{ vlan_id }}"
         route_distinguisher: auto
         route_target_both:
-        - "{{ block_id }}:{{ vlan_id }}"
+        - "{{ block_id }}:{{ block_id }}{{ vlan_id }}"
         state: present
     
     - name: Save config
