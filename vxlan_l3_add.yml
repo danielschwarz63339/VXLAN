@@ -3,19 +3,12 @@
   gather_facts: no
   hosts: nxos
   tasks:
-   #- name: Create Vlan and map to VNI
-   #  nxos_vlan:
-   #    vlan_id: "{{ vlan_id }}"
-   #    mapped_vni: "{{ block_id }}{{ vlan_id }}"
-   #    name: "{{ description }}"
-   #    state: present
-
     - name: Create Vlan and map to VNI
-      nxos_vlans:
-        config:
-        - vlan_id: "{{ vlan_id }}"
-          name: "{{ description }}"
-          mapped_vni: "{{ block_id }}{{ vlan_id }}"
+      nxos_vlan:
+        vlan_id: "{{ vlan_id }}"
+        mapped_vni: "{{ block_id }}{{ vlan_id }}"
+        name: "{{ description }}"
+        state: present
       
     - name: Create Vlan and map to VNI
       nxos_vxlan_vtep_vni:
